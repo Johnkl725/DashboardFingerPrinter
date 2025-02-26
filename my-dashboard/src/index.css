@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 :root {
   --background-color: white;
   --text-color: black;
@@ -20,12 +21,13 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+
   background-color: var(--background-color);
   color: var(--text-color);
   transition: background-color 0.3s, color 0.3s;
 }
 
+/* Botones estilizados */
 button:not([class]) {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -39,6 +41,49 @@ button:not([class]) {
   transition: all 0.3s;
 }
 
+/* Hover en botones */
 button:not([class]):hover {
   border-color: #646cff;
+  background-color: #3a74d1; /* Cambiar al color deseado */
+}
+
+/* Estilos para contenedor de las tablas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #f3f4f6;
+}
+
+th, td {
+  padding: 8px 12px;
+  text-align: left;
+}
+
+td {
+  border-top: 1px solid #ddd;
+}
+
+th {
+  border-bottom: 2px solid #ddd;
+  background-color: #3b82f6;
+  color: white;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .container {
+    padding: 4px;
+  }
+
+  .table {
+    overflow-x: auto;
+    display: block;
+  }
+
+  th, td {
+    padding: 10px;
+  }
 }
