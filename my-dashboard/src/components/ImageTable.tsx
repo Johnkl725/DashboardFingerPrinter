@@ -1,4 +1,3 @@
-// src/components/ImagenesTable.tsx
 import React, { useEffect, useState } from 'react'
 import { getData } from '../apiClient'
 
@@ -16,7 +15,7 @@ const ImagenesTable: React.FC = () => {
   useEffect(() => {
     const fetchImagenes = async () => {
       try {
-        const data = await getData('/userimg')  // Usamos la función getData del apiClient
+        const data = await getData('/userimg')
         setImagenes(data)
       } catch (error) {
         console.error('Error al obtener las imágenes:', error)
@@ -26,10 +25,10 @@ const ImagenesTable: React.FC = () => {
   }, [])
 
   return (
-    <div className="p-4">
+    <div className="overflow-x-auto bg-white p-4 rounded-lg shadow-md">
       <h2 className="text-2xl font-semibold mb-4">Imágenes</h2>
       <table className="min-w-full table-auto border-collapse border border-gray-300">
-        <thead>
+        <thead className="bg-gray-200">
           <tr>
             <th className="px-4 py-2 border">ID Imagen</th>
             <th className="px-4 py-2 border">ID Usuario</th>

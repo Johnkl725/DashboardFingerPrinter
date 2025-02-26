@@ -1,4 +1,3 @@
-// src/components/HechosTable.tsx
 import React, { useEffect, useState } from 'react'
 import { getData } from '../apiClient'
 
@@ -15,7 +14,7 @@ const HechosTable: React.FC = () => {
   useEffect(() => {
     const fetchHechos = async () => {
       try {
-        const data = await getData('/hechos')  // Usamos la función getData del apiClient
+        const data = await getData('/hechos')
         setHechos(data)
       } catch (error) {
         console.error('Error al obtener los hechos:', error)
@@ -25,10 +24,10 @@ const HechosTable: React.FC = () => {
   }, [])
 
   return (
-    <div className="p-4">
+    <div className="overflow-x-auto bg-white p-4 rounded-lg shadow-md">
       <h2 className="text-2xl font-semibold mb-4">Hechos</h2>
       <table className="min-w-full table-auto border-collapse border border-gray-300">
-        <thead>
+        <thead className="bg-gray-200">
           <tr>
             <th className="px-4 py-2 border">ID Hecho</th>
             <th className="px-4 py-2 border">ID Usuario</th>
