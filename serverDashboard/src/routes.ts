@@ -16,7 +16,7 @@ router.get('/usuarios', async (req: Request, res: Response) => {
 });
 
 // Obtener todas las imágenes
-router.get('/imagenes', async (req: Request, res: Response) => {
+router.get('/userimg', async (req: Request, res: Response) => {
   try {
     const result = await client.query('SELECT * FROM userimg');
     res.status(200).json(result.rows);
