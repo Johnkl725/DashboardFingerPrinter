@@ -15,7 +15,7 @@ const ImagenesTable: React.FC = () => {
   useEffect(() => {
     const fetchImagenes = async () => {
       try {
-        const data = await getData('/userimg')
+        const data = await getData('/userimg')  // Usamos la función getData del apiClient
         setImagenes(data)
       } catch (error) {
         console.error('Error al obtener las imágenes:', error)
@@ -25,26 +25,26 @@ const ImagenesTable: React.FC = () => {
   }, [])
 
   return (
-    <div className="overflow-x-auto bg-white p-4 rounded-lg shadow-md">
-      <h2 className="text-2xl font-semibold mb-4">Imágenes</h2>
+    <div className="p-6 bg-white shadow-lg rounded-lg">
+      <h2 className="text-2xl font-semibold text-blue-600 mb-4">Imágenes</h2>
       <table className="min-w-full table-auto border-collapse border border-gray-300">
-        <thead className="bg-gray-200">
+        <thead className="bg-blue-100">
           <tr>
-            <th className="px-4 py-2 border">ID Imagen</th>
-            <th className="px-4 py-2 border">ID Usuario</th>
-            <th className="px-4 py-2 border">Nombre</th>
-            <th className="px-4 py-2 border">ID Huella</th>
-            <th className="px-4 py-2 border">Link Imagen</th>
+            <th className="px-6 py-3 border">ID Imagen</th>
+            <th className="px-6 py-3 border">ID Usuario</th>
+            <th className="px-6 py-3 border">Nombre</th>
+            <th className="px-6 py-3 border">ID Huella</th>
+            <th className="px-6 py-3 border">Link Imagen</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="text-gray-700">
           {imagenes.map((imagen) => (
-            <tr key={imagen.id_imagen}>
-              <td className="px-4 py-2 border">{imagen.id_imagen}</td>
-              <td className="px-4 py-2 border">{imagen.id_usuario}</td>
-              <td className="px-4 py-2 border">{imagen.nombre}</td>
-              <td className="px-4 py-2 border">{imagen.id_huella}</td>
-              <td className="px-4 py-2 border">{imagen.link_imagen}</td>
+            <tr key={imagen.id_imagen} className="hover:bg-gray-50">
+              <td className="px-6 py-3 border">{imagen.id_imagen}</td>
+              <td className="px-6 py-3 border">{imagen.id_usuario}</td>
+              <td className="px-6 py-3 border">{imagen.nombre}</td>
+              <td className="px-6 py-3 border">{imagen.id_huella}</td>
+              <td className="px-6 py-3 border">{imagen.link_imagen}</td>
             </tr>
           ))}
         </tbody>

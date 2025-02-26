@@ -11,37 +11,40 @@ interface Hecho {
 const HechosTable: React.FC = () => {
   const [hechos, setHechos] = useState<Hecho[]>([])
 
-  useEffect(() => {
-    const fetchHechos = async () => {
-      try {
-        const data = await getData('/hechos')
-        setHechos(data)
-      } catch (error) {
-        console.error('Error al obtener los hechos:', error)
-      }
+  // Función para obtener los datos
+  const fetchHechos = async () => {
+    try {
+      const data = await getData('/hechos')  // Usamos la función getData del apiClient
+      setHechos(data)
+    } catch (error) {
+      console.error('Error al obtener los hechos:', error)
     }
+  }
+
+  // Llamar a la función fetchHechos cuando se monta el componente
+  useEffect(() => {
     fetchHechos()
   }, [])
 
   return (
-    <div className="overflow-x-auto bg-white p-4 rounded-lg shadow-md">
-      <h2 className="text-2xl font-semibold mb-4">Hechos</h2>
+    <div className="p-6 bg-white shadow-lg rounded-lg">
+      <h2 className="text-2xl font-semibold text-blue-600 mb-4">Hechos</h2>
       <table className="min-w-full table-auto border-collapse border border-gray-300">
-        <thead className="bg-gray-200">
+        <thead className="bg-blue-100">
           <tr>
-            <th className="px-4 py-2 border">ID Hecho</th>
-            <th className="px-4 py-2 border">ID Usuario</th>
-            <th className="px-4 py-2 border">Fecha</th>
-            <th className="px-4 py-2 border">Estado</th>
+            <th className="px-6 py-3 border">ID Hecho</th>
+            <th className="px-6 py-3 border">ID Usuario</th>
+            <th className="px-6 py-3 border">Fecha</th>
+            <th className="px-6 py-3 border">Estado</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="text-gray-700">
           {hechos.map((hecho) => (
-            <tr key={hecho.id_hecho}>
-              <td className="px-4 py-2 border">{hecho.id_hecho}</td>
-              <td className="px-4 py-2 border">{hecho.id_usuario}</td>
-              <td className="px-4 py-2 border">{hecho.fecha}</td>
-              <td className="px-4 py-2 border">{hecho.estado}</td>
+            <tr key={hecho.id_hecho} className="hover:bg-gray-50">
+              <td className="px-6 py-3 border">{hecho.id_hecho}</td>
+              <td className="px-6 py-3 border">{hecho.id_usuario}</td>
+              <td className="px-6 py-3 border">{hecho.fecha}</td>
+              <td className="px-6 py-3 border">{hecho.estado}</td>
             </tr>
           ))}
         </tbody>
